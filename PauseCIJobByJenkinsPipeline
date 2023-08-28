@@ -1,0 +1,26 @@
+pipeline {
+    agent none
+    stages {
+        stage('Example Build') {
+            agent {
+              label "master"
+            }
+            steps {
+                sh 'echo Hello World'
+            }
+        }
+        stage('Ready to Pause') {
+            steps {
+                input(message: "Paused")
+            }
+        }
+        stage('Resume') {
+            agent {
+              label "master"
+            }
+            steps {
+                sh 'echo Resumed'
+            }
+        }
+    }
+}
