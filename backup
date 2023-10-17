@@ -1,0 +1,3 @@
+download: curl -u $3 $1/config.xml > $2.xml
+
+upload: curl -s -XPOST $1/createItem?name=$2 -u $3 --data-binary @$4.xml -H "Content-Type:text/xml"
